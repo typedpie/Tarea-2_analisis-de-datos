@@ -1,0 +1,31 @@
+📉 Limitaciones
+
+Resolución temporal
+
+El producto S5P (Sentinel-5P) disponible solo cubre un año (2024) con promedios mensuales, lo que limita el análisis de tendencias o anomalías interanuales.
+
+ERA5, en cambio, abarca dos años, pero se usó solo el período coincidente con S5P para mantener consistencia temporal.
+
+Resolución espacial
+
+El NO₂ del S5P se encuentra en celdas satelitales (~1 km o más) y luego fue agregado a nivel comunal. Esto genera una pérdida de detalle intra-urbano y puede suavizar valores extremos.
+
+Las diferencias entre comunas vecinas pueden no ser significativas debido a este efecto de interpolación.
+
+Representatividad geográfica
+
+La Región de Los Ríos tiene solo dos provincias (Valdivia y Ranco), lo que limita la comparación interna.
+
+Además, las áreas rurales grandes tienden a subestimar los valores por promedio espacial, ocultando zonas localmente más contaminadas (ej. Valdivia urbana).
+
+Fuentes de incertidumbre
+
+Los valores de NO₂ dependen de condiciones atmosféricas, nubosidad y ángulo solar, lo que puede introducir errores de medición satelital.
+
+El producto ERA5 presenta incertidumbre por re-análisis (modelos físicos + observaciones), no datos in situ.
+
+Limitaciones de integración
+
+La unión entre S5P y ERA5 se hizo mediante la fecha (Fecha), asumiendo que ambas variables corresponden al mismo período mensual promedio.
+
+No hay validación directa con mediciones terrestres (comunas sentinel), que sería el siguiente paso de verificación.
