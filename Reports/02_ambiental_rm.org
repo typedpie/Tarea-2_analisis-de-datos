@@ -29,3 +29,34 @@ Limitaciones de integración
 La unión entre S5P y ERA5 se hizo mediante la fecha (Fecha), asumiendo que ambas variables corresponden al mismo período mensual promedio.
 
 No hay validación directa con mediciones terrestres (comunas sentinel), que sería el siguiente paso de verificación.
+
+
+*Preguntas:
+
+**1 ¿Cómo varían clima y contaminación entre comunas y estaciones?**
+Durante 2024 se observa una clara variación estacional tanto en el clima como en la concentración de NO₂.  
+En general, las comunas del norte de la región (como Mariquina y parte de Valdivia) presentan niveles más altos de NO₂ durante los meses fríos (junio a agosto), coincidiendo con el aumento del uso de calefacción residencial.  
+En contraste, durante el verano (diciembre a febrero) los valores disminuyen de forma marcada debido a la mayor dispersión atmosférica y la reducción de emisiones locales.  
+Climáticamente, la temperatura media sigue el patrón típico: mínima en invierno (~5°C) y máxima en verano (~17°C), mientras que la humedad relativa aumenta en los meses fríos, potenciando la estabilidad atmosférica.
+
+**2. ¿Qué relación exploratoria se observa entre NO₂ y temperatura/humedad?**
+La relación entre NO₂ y temperatura es inversa: a medida que la temperatura aumenta, la concentración de NO₂ disminuye.  
+Esto se debe a una mejor mezcla del aire y menor uso de fuentes de combustión durante los meses cálidos.  
+Por otro lado, la humedad relativa muestra una relación más compleja: en condiciones de alta humedad y bajas temperaturas, el NO₂ tiende a acumularse por menor dispersión vertical.  
+En cambio, en días cálidos y húmedos, la concentración disminuye por convección más intensa.  
+Estos patrones sugieren un control meteorológico importante sobre la calidad del aire regional.
+
+**3. ¿Qué episodios extremos destacan y qué cobertura de datos tuvieron?**
+Los valores máximos de NO₂ se concentran en los meses de invierno (junio y julio), especialmente en comunas del interior con menor ventilación atmosférica.  
+Algunas fechas presentan concentraciones superiores al percentil 95, coincidiendo con días de temperaturas mínimas y escasa velocidad del viento.  
+A pesar de ello, los datos satelitales de S5P muestran buena cobertura general (>90%) salvo algunos días nublados o con baja calidad (flag < 0.75), que fueron filtrados.  
+Por tanto, la serie temporal conserva continuidad suficiente para análisis exploratorios y comparativos entre provincias.
+
+**4. ¿Qué decisiones de procesamiento afectarían más los modelos posteriores?**
+Las decisiones más críticas son:
+- **Umbral de calidad de datos (qa_flag)**: un filtro demasiado estricto puede eliminar observaciones útiles, mientras que uno laxo introduce ruido.  
+- **Interpolación temporal de lagunas**: afecta la representatividad diaria del panel.  
+- **Resolución espacial de los promedios comunales**: un agrupamiento demasiado amplio puede suavizar extremos locales.  
+- **Promedios mensuales**: si se usan para modelar relaciones con meteorología, es fundamental que se mantenga la correspondencia temporal con ERA5.  
+
+En conjunto, la elección del filtro de calidad y la escala temporal son los factores que más incidirían en la robustez de modelos predictivos posteriores.
